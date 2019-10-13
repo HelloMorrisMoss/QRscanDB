@@ -125,12 +125,14 @@ public class main extends JFrame implements Runnable, ThreadFactory {
                 try {
                     result = new MultiFormatReader().decode(bitmap);
                 } catch (NotFoundException e) {
-                    // fall thru, it means there is no QR code in image
+                    // fall through: there is no QR code in image
                 }
             }
 
             if (result != null) {
+                // this is where it gets sent somewhere, in the example to a text box
                 textarea.setText(result.getText());
+
             }
 
         } while (true);
