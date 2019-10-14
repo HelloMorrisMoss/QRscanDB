@@ -34,8 +34,8 @@ public class InsertApp {
      * @param name
      * @param capacity
      */
-    public void insert(String name, double capacity) {
-        String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
+    public void insert(String dbTable, String name, double capacity) {
+        String sql = String.format("INSERT INTO %s(name,capacity) VALUES(?,?)",dbTable);
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -54,9 +54,10 @@ public class InsertApp {
 
         InsertApp app = new InsertApp();
         // insert three new rows
-        app.insert("Raw Materials", 3000);
-        app.insert("Semifinished Goods", 4000);
-        app.insert("Finished Goods", 5000);
+        app.insert("warehouses", "Raw 2 Materials", 3000);
+        app.insert("warehouses","Semifinished 2 Goods", 4000);
+        app.insert("warehouses","Finished 2 Goods", 5000);
+        app.insert("warehouses", "junk", 9001);
     }
 
 }

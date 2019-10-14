@@ -60,6 +60,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import net.sqlitetutorial.InsertApp;
 
 public class main extends JFrame implements Runnable, ThreadFactory {
 
@@ -73,6 +74,13 @@ public class main extends JFrame implements Runnable, ThreadFactory {
 
     public main() {
         super();
+
+        /*
+        System.out.println("should be instering");
+        InsertApp inserter = new InsertApp();
+
+        inserter.insert("warehouses", "junk", 9001);
+        */
 
         setLayout(new FlowLayout());
         setTitle("Read QR / Bar Code With Webcam");
@@ -131,6 +139,8 @@ public class main extends JFrame implements Runnable, ThreadFactory {
 
             if (result != null) {
                 // this is where it gets sent somewhere, in the example to a text box
+                InsertApp in = new InsertApp();
+                in.insert("warehouses", result.getText(), 9001.0);
                 textarea.setText(result.getText());
 
             }
